@@ -37,6 +37,8 @@ void recurse(vector<vector<int> > &grid, vector<vector<int> > &bombs, int i, int
 		return;
 	}
 
+	if (k - subset.size() > (m - j) + m * (n - i)) return;
+
 	if (i > n) return;
 	bool good = true;
 	for (auto val : changes) {
@@ -50,7 +52,7 @@ void recurse(vector<vector<int> > &grid, vector<vector<int> > &bombs, int i, int
 		if (bombs[i - 1][j - 1] != grid[i - 1][j - 1]) good = false;
 	}
 
-	if (j == m && i > 0) {
+	if (j == m - 1 && i > 0) {
 		if (bombs[i - 1][j] != grid[i - 1][j]) good = false;
 	}
 
